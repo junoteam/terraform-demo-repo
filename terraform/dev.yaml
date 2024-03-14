@@ -1,11 +1,7 @@
 ---
-name: &name karpenter-demo
-cidr: 10.20.0.0/16
-eks_cluster_name: *name
-cluster_name: *name
+vpc:
+  vpc_name: "alex"
+  vpc_cidr: "10.0.0.0/16"
 
-# EKS services
-enabled_services:
-  - argo-cd
-  - nginx-controller
-  - cert-manager
+eks:
+  eks_cluster_name: "alex-demo"
