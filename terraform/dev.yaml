@@ -4,5 +4,8 @@ vpc_1:
   vpc_name: "dev-env"
   vpc_cidr: "10.0.0.0/16"
 
+ecr_1:
+  repo_name: "dev-env-ecr"
+
 eks_1:
   eks_cluster_name: "alex-demo"

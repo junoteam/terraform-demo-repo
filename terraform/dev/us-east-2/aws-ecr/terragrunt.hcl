@@ -11,6 +11,25 @@ locals {
 }
 
 inputs = {
-  name                 = var.name
-  image_tag_mutability = "MUTABLE"
+  repository_name = include.root.inputs.ecr_1.repo_name
+  create_lifecycle_policy = true
+  repository_lifecycle_policy = jsonencode({
+    rules = [
+      {
+        rulePriority = 1,
+        description  = "Keep last 30 images",
+        selection = {
+          tagStatus     = "tagged",
+          tagPrefixList = ["v"],
+          countType     = "imageCountMoreThan",
+          countNumber   = 30
+        },
+        action = {
+          type = "expire"
+        }
+      }
+    ]
+  })
+
+  repository_force_delete = true
 }
