@@ -15,11 +15,11 @@ dependency "aws-eks" {
 }
 
 inputs = {
-  cluster_id            = dependency.aws-eks.outputs.cluster_id
-  environment           = local.environment_vars.locals.environment
-  aws_region            = local.partition_vars.locals.aws_region
-  enable_prometheus     = true
-  enable_pod_monitor    = true
+  cluster_id         = dependency.aws-eks.outputs.cluster_id
+  environment        = local.environment_vars.locals.environment
+  aws_region         = local.partition_vars.locals.aws_region
+  enable_prometheus  = true
+  enable_pod_monitor = true
 
   helm_releases_overrides = {
 

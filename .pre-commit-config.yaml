@@ -5,12 +5,14 @@ repos:
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: check-added-large-files
   - repo: https://github.com/antonbabenko/pre-commit-terraform.git
-    rev: v1.88.0
+    rev: v1.88.2
     hooks:
       - id: terragrunt_fmt
       - id: terraform_fmt
       - id: terraform_docs
+      - id: terraform_tflint
       - id: terraform_tfsec
   - repo: https://github.com/bridgecrewio/checkov.git
     rev: '3.2.32'

@@ -6,6 +6,10 @@
 
 ## Operations
 
+```bash
+pre-commit run --all-files
+```
+
 ### Terragrunt plan/apply
 
 ### Terragrunt plan/apply (per resource)

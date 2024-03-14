@@ -1,18 +1,18 @@
 #
 # Declaring an Input Variable accepted by a module
 #
-variable region {
+variable "region" {
   type        = string
   default     = ""
   description = "The region to deploy the resources in."
 }
 
-variable environment {
+variable "environment" {
   type        = string
   description = "The name of the current environment."
 }
 
-variable cluster_id {
+variable "cluster_id" {
   type        = string
   description = "The ID of the EKS cluster."
 }

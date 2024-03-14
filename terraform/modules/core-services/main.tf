@@ -7,7 +7,7 @@ Core Services for EKS:
 */
 
 locals {
-  namespaces = [var.environment, "mgmt", "monitoring"]
+  namespaces  = [var.environment, "mgmt", "monitoring"]
   helm_stable = "https://charts.helm.sh/stable"
 
   helm_releases = {
@@ -58,23 +58,23 @@ resource "helm_release" "prometheus" {
 # Install populated releases into Kubernetes cluster
 resource "helm_release" "release" {
   for_each = {
-  for release in distinct(concat(keys(local.helm_releases), keys(var.helm_releases_overrides))) :
+    for release in distinct(concat(keys(local.helm_releases), keys(var.helm_releases_overrides))) :
 
-  release => merge(
-    try(local.helm_releases[release], {}),
-    try(var.helm_releases_overrides[release], {})
-  )
+    release => merge(
+      try(local.helm_releases[release], {}),
+      try(var.helm_releases_overrides[release], {})
+    )
 
-  if try(
-    "true" == lookup(
-      merge(
-        try(local.helm_releases[release], {}),
-        try(var.helm_releases_overrides[release], {})
+    if try(
+      "true" == lookup(
+        merge(
+          try(local.helm_releases[release], {}),
+          try(var.helm_releases_overrides[release], {})
+        ),
+        "enabled"
       ),
-      "enabled"
-    ),
-    true
-  )
+      true
+    )
   }
 
   name       = each.key
@@ -88,11 +88,11 @@ resource "helm_release" "release" {
       templatefile(
         "${path.module}/values/${each.key}.yaml",
         {
-          cluster_id            = var.cluster_id
-          environment           = var.environment
-          aws_region            = var.region
-          enable_prometheus     = var.enable_prometheus
-          enable_pod_monitor    = var.enable_pod_monitor
+          cluster_id         = var.cluster_id
+          environment        = var.environment
+          aws_region         = var.region
+          enable_prometheus  = var.enable_prometheus
+          enable_pod_monitor = var.enable_pod_monitor
         }
       )
     ],

@@ -11,7 +11,7 @@ locals {
 }
 
 inputs = {
-  repository_name = include.root.inputs.ecr_1.repo_name
+  repository_name         = include.root.inputs.ecr_1.repo_name
   create_lifecycle_policy = true
   repository_lifecycle_policy = jsonencode({
     rules = [

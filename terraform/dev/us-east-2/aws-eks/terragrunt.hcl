@@ -24,7 +24,7 @@ inputs = {
   cluster_name    = include.root.inputs.eks_1.eks_cluster_name
   cluster_version = include.root.inputs.eks_1.eks_version
 
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
 
   cluster_addons = {
@@ -69,14 +69,4 @@ inputs = {
       groups   = ["system:masters"]
     }
   ]
-}
-
-generate "aws-eks-auth" {
-  path      = "k8s-auth.auto.tf"
-  if_exists = "overwrite_terragrunt"
-  contents  = <<-EOF
-    data "aws_eks_cluster" "cluster" {
-      name = module.this.cluster_name
-    }
-  EOF
 }

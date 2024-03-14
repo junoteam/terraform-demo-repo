@@ -18,7 +18,7 @@ terraform_version_constraint  = "~> 1.7.4"
 terragrunt_version_constraint = "~> 0.55.12"
 
 # Generate terraform files
-generate "terraform" {
+generate "terraform-config" {
   path      = "versions.tf"
   if_exists = "overwrite"
   contents  = <<-EOF
@@ -28,7 +28,7 @@ generate "terraform" {
       required_providers {
         aws = {
           source  = "hashicorp/aws"
-          version = "~> 5.35.0"
+          version = "~> 5.40.0"
         }
       }
     }

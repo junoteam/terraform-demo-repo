@@ -12,8 +12,8 @@ generate "terraform" {
           version = "~> 5.40.0"
         }
         kubectl = {
-          source  = "alekc/kubectl"
-          version = "2.0.4"
+          source  = "gavinbunney/kubectl"
+          version = "~> 1.14.0"
         }
         kubernetes = {
           source  = "hashicorp/kubernetes"
