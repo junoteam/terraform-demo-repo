@@ -1,0 +1,14 @@
+**/.vagrant
+file.conf
+.idea/
+.DS_Store
+.terragrunt-cache
+.terraform.lock.hcl
+.terraform
+.terragrunt-cache*
+test.conf
+.infracost
+*.terragrunt-cache
+venv
+__pycache__/
+.env

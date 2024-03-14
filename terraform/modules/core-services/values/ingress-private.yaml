@@ -1,0 +1,25 @@
+# https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
+---
+
+controller:
+  ingressClassResource:
+    enabled: true
+    name: internal-nginx
+    default: false
+    controllerValue: "k8s.io/internal-nginx"
+  service:
+    enabled: true
+    externalTrafficPolicy: Local
+  resources:
+    limits:
+      cpu: 200m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: prometheus

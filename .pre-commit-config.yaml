@@ -1,0 +1,24 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/antonbabenko/pre-commit-terraform.git
+    rev: v1.88.0
+    hooks:
+      - id: terragrunt_fmt
+      - id: terraform_fmt
+      - id: terraform_docs
+      - id: terraform_tfsec
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: '3.2.32'
+    hooks:
+      - id: checkov
+        always_run: false
+        exclude: \.+.terragrunt-cache\/.*$
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.2
+    hooks:
+      - id: gitleaks

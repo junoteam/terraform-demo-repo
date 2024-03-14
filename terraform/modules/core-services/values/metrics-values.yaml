@@ -1,0 +1,11 @@
+# https://github.com/kubernetes-sigs/metrics-server/blob/master/charts/metrics-server/values.yaml
+---
+nodeSelector:
+  name: management
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
