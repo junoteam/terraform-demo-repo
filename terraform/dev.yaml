@@ -9,3 +9,4 @@ ecr_1:
 
 eks_1:
   eks_cluster_name: "alex-demo"
+  eks_version: "1.29"
