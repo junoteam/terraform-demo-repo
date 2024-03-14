@@ -4,7 +4,7 @@ include "root" {
 }
 
 terraform {
-  #source = "git::git@github.com:terraform-aws-modules/terraform-aws-vpc.git//.?ref=v5.6.0"
+  #source = "git::git@github.com:terraform-aws-modules/terraform-aws-vpc.git//.?ref=v5.6.0" # example
   source = "tfr://registry.terraform.io/terraform-aws-modules/vpc/aws?version=5.6.0"
 }
 

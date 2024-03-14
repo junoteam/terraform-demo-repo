@@ -1,5 +1,5 @@
 ---
-name: naviteq
+name: prod-tf
 cluster_name: production
 # VPC
 cidr: 10.200.0.0/16
@@ -19,5 +19,3 @@ ecr_repositories:
     repository_force_delete: false
     repository_image_tag_mutability: MUTABLE
 # Route3
-route53_zones:
-  karpenter-demo.beseder.org: {}
