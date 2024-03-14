@@ -10,11 +10,11 @@ terraform {
 
 locals {
   azs = formatlist("%s%s", include.root.locals.region, ["a","b","c"])
-  vpc_cidr = include.root.inputs.vpc.vpc_cidr
+  vpc_cidr = include.root.inputs.vpc_1.vpc_cidr
 }
 
 inputs = {
-  name = include.root.inputs.vpc.vpc_name
+  name = include.root.inputs.vpc_1.vpc_name
   cidr = local.vpc_cidr
 
   azs             = local.azs
@@ -28,11 +28,11 @@ inputs = {
 
   public_subnet_tags = {
     "kubernetes.io/role/elb" = "1"
-    "kubernetes.io/cluster/${include.root.inputs.eks.eks_cluster_name}" = "shared"
+    "kubernetes.io/cluster/${include.root.inputs.eks_1.eks_cluster_name}" = "shared"
   }
 
   private_subnet_tags = {
     "kubernetes.io/role/internal-elb"  = "1"
-    "kubernetes.io/cluster/${include.root.inputs.eks.eks_cluster_name}" = "shared"
+    "kubernetes.io/cluster/${include.root.inputs.eks_1.eks_cluster_name}" = "shared"
   }
 }

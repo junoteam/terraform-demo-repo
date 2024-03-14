@@ -71,5 +71,5 @@ remote_state {
   }
 }
 
-# Inputs
+# Inputs per env
 inputs = yamldecode(try(file("${local.environment}.yaml"), ""))

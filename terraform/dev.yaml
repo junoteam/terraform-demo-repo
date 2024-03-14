@@ -1,7 +1,8 @@
 ---
-vpc:
-  vpc_name: "alex"
+# _1 postfix in case of multiple resources of same type (e.g. vpc_2, vpc_3, etc... in the same dev env)
+vpc_1:
+  vpc_name: "dev-env"
   vpc_cidr: "10.0.0.0/16"
 
-eks:
+eks_1:
   eks_cluster_name: "alex-demo"
