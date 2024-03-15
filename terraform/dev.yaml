@@ -15,4 +15,4 @@ ec2_1:
   ec2_name: "demo-ec2"
 
 sg_ec2:
-  sg_ec2_name: "sg-ec2"
+  sg_ec2_name: "my-sg-group"

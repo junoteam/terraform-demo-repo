@@ -4,7 +4,7 @@ include "root" {
 }
 
 terraform {
-  source = "${get_parent_terragrunt_dir()}/../modules//aws-datasource"
+  source = "${get_terragrunt_dir()}/../../../modules/aws-datasource"
 }
 
 inputs = {

@@ -8,15 +8,17 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path  = "../aws-vpc"
+  config_path = "../aws-vpc"
 }
 
 dependency "sg" {
   config_path = "../aws-sg"
+  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).sg
 }
 
 dependency "aws-datasource" {
   config_path = "../aws-datasource"
+  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).datasource
 }
 
 inputs = {
@@ -26,9 +28,9 @@ inputs = {
   spot_price                  = "0.60"
   spot_type                   = "persistent"
   instance_type               = "t3.medium"
-  availability_zone           = element(dependency.vpc.outputs.vpc, 0)
+  availability_zone           = element(dependency.vpc.outputs.azs, 0)
   subnet_id                   = element(dependency.vpc.outputs.private_subnets, 0)
-  vpc_security_group_ids      = element(dependency.sg.outputs.security_group_vpc_id, 0)
+  vpc_security_group_ids      = [dependency.sg.outputs.security_group_id]
   associate_public_ip_address = true
   user_data                   = file("./init.yaml")
 
@@ -45,9 +47,6 @@ inputs = {
       volume_type = "gp3"
       throughput  = 200
       volume_size = 50
-      tags = {
-        Name = "my-root-block"
-      }
     },
   ]
 }

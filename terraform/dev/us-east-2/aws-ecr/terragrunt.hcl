@@ -7,9 +7,6 @@ terraform {
   source = "tfr://registry.terraform.io/terraform-aws-modules/ecr/aws?version=1.6.0"
 }
 
-locals {
-}
-
 inputs = {
   repository_name         = include.root.inputs.ecr_1.repo_name
   create_lifecycle_policy = true

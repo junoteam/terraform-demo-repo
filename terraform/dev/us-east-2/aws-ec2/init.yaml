@@ -26,8 +26,8 @@ users:
 # Download and install packages
 packages:
   - git
-  - htop 
-  - tmux 
+  - htop
+  - tmux
 
 # Set user dir and permissions
 runcmd:

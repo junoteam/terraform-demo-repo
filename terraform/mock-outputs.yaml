@@ -16,3 +16,5 @@ eks-efs:
     eks: fs-11121212
 sg:
   security_group_id: sg-xxxx
+datasource:
+  amazon_linux_ami_id: ami-xxx

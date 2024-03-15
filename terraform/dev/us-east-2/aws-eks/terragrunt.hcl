@@ -11,9 +11,6 @@ terraform {
   source = "tfr://registry.terraform.io/terraform-aws-modules/eks/aws?version=20.8.3"
 }
 
-locals {
-}
-
 dependency "vpc" {
   config_path  = "../aws-vpc"
   mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
