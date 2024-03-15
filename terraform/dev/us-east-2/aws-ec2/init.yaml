@@ -1,0 +1,35 @@
+#cloud-config
+# Add groups to the system
+# Adds the ubuntu group with members 'root' and 'sys'
+# and the empty group hashicorp.
+repo_update: true
+repo_upgrade: all
+package_upgrade: true
+
+groups:
+  - admins: [root,sys]
+  - cloud-users
+
+# Add users to the system. Users are added after groups are added.
+users:
+  - default
+  - name: terraform
+    gecos: terraform
+    shell: /bin/bash
+    primary_group: cloud-users
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: adm, wheel, systemd-journal
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJDMRUCY12/pmNUjWZrwXZcSmHfH+bWqMzBJnXdbJDCEorIgoJeJESvoDPd0t+gA9DR5PuueK2TCkcMuxmwiDxxf3daRQiDWwv00F9Vx+NjQzdf0VTNT17mPu7PuSMrqSE1NLVRZKsoHy9j9yDY1EeePCwvgPKS30vbvDS2cSZHxwsP7csV01wBmSd16lVzx2oy49mqbcSzfG1BgadmFwL+y8MFMMgFBjsJhiRYSQt3NBp4cW+gRNyKjkZi5T+HW3cL3cS7pG55YXj2KLt7+0Rc4ciPbu6v5DcLYnYEymjYSYldn6LMxN83BBpBmKIPEGflcxcXnuBEbVCsdxRKfkBvT12aPYGB35lWjfNqDAxDzRYPiPMZ3Nm93KVn3KZgSpW6rzAupk11HWK8th50iKt9NTAbG2ttVAg4i3pekEACjT3Q/C7pEBSXZh3PpG45s6sDl29YVyryclz9gSuT+w6IQuMqDJw6V/kWAlWdcSwHT5rBFAf6brWn0F7lQcf3nM= your_email@example.com
+
+# Download and install packages
+packages:
+  - git
+  - htop 
+  - tmux 
+
+# Set user dir and permissions
+runcmd:
+  - sudo mkdir /home/terraform/code
+  - sudo chown -R terraform:cloud-users /home/terraform/code
