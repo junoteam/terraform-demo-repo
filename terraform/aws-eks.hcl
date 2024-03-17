@@ -1,7 +1,7 @@
 # We overwrite terraform block to use custom provider
 generate "terraform" {
   path      = "versions.tf"
-  if_exists = "overwrite"
+  if_exists = "overwrite_terragrunt"
   contents  = <<-EOF
     terraform {
       backend "s3" {}

@@ -1,21 +1,21 @@
 ---
 # _1 postfix in case of multiple resources of same type (e.g. vpc_2, vpc_3, etc... in the same dev env)
 vpc_1:
-  vpc_name: "dev-env"
+  vpc_name: "dev-vpc"
   vpc_cidr: "10.0.0.0/16"
 
 ecr_1:
   repo_name: "dev-env-ecr"
 
 eks_1:
-  eks_cluster_name: "alex-demo"
+  eks_cluster_name: "dev-eks-1"
   eks_version: "1.29"
 
 ec2_1:
-  ec2_name: "demo-ec2"
+  ec2_name: "dev-ec2"
 
 sg_ec2:
-  sg_ec2_name: "my-sg-group"
+  sg_ec2_name: "dev-sg-ec2"
 
 s3_buckets:
   bucket_name_1: "my-very-random-named-bucket-1"
