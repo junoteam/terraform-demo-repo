@@ -16,3 +16,7 @@ ec2_1:
 
 sg_ec2:
   sg_ec2_name: "my-sg-group"
+
+s3_buckets:
+  bucket_name_1: "my-very-random-named-bucket-1"
+  bucket_name_2: "my-very-random-named-bucket-2"
