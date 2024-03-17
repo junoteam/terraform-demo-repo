@@ -2,6 +2,7 @@
 vpc:
   vpc_id: vpc-xxxxx
   private_subnets: ["subnet-xxxx", "subnet-xxxx2", "subnet-xxx3"]
+  azs: ["us-xxxx-xx, us-xxxx-xx", "us-xxxx-xx"]
 eks:
   cluster_id: test
   oidc_provider_arn: arn

@@ -1,6 +1,7 @@
 include "root" {
   path   = find_in_parent_folders("aws.hcl")
   expose = true
+  merge_strategy = "deep"
 }
 
 include "k8s" {
@@ -52,13 +53,10 @@ inputs = {
       min_size     = 2
       max_size     = 3
       desired_size = 2
-
       instance_types = ["t3.large"]
-      capacity_type  = "SPOT"
     }
   }
 
-  # Auth
   aws_auth_users = [
     for user in ["alex-alex", "alex-berber"] : {
       userarn  = "arn:aws:iam::${include.root.locals.account_id}:user/${user}"

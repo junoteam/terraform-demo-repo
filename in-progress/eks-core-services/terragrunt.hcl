@@ -4,10 +4,7 @@ include "root" {
 }
 
 terraform {
-  source = "${get_parent_terragrunt_dir()}/../modules//core-services"
-}
-
-locals {
+  source = "${get_terragrunt_dir()}/../../../modules/core-services"
 }
 
 dependency "aws-eks" {

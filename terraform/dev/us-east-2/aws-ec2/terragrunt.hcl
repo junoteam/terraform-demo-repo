@@ -1,6 +1,7 @@
 include "root" {
   path   = find_in_parent_folders("aws.hcl")
   expose = true
+  merge_strategy = "deep"
 }
 
 terraform {
@@ -9,16 +10,20 @@ terraform {
 
 dependency "vpc" {
   config_path = "../aws-vpc"
+  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
+  mock_outputs_allowed_terraform_commands = ["plan"]
 }
 
 dependency "sg" {
   config_path = "../aws-sg"
   mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).sg
+  mock_outputs_allowed_terraform_commands = ["plan"]
 }
 
 dependency "aws-datasource" {
   config_path = "../aws-datasource"
   mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).datasource
+  mock_outputs_allowed_terraform_commands = ["plan"]
 }
 
 inputs = {
