@@ -11,7 +11,7 @@ terraform {
 dependency "vpc" {
   config_path = "../aws-vpc"
   mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
-  mock_outputs_allowed_terraform_commands = ["plan"]
+  mock_outputs_allowed_terraform_commands = ["plan", "init"]
 }
 
 inputs = {

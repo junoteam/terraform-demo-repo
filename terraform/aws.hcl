@@ -18,7 +18,7 @@ terraform_version_constraint  = "~> 1.7.4"
 terragrunt_version_constraint = "~> 0.55.16"
 
 # Generate terraform files
-generate "terraform-config" {
+generate "terraform" {
   path      = "versions.tf"
   if_exists = "overwrite"
   contents  = <<-EOF

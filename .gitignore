@@ -15,3 +15,5 @@ __pycache__/
 terragrunt-debug.*
 config
 in-progress
+sa.yaml
+deployment.yaml

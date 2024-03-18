@@ -15,7 +15,7 @@ terraform {
 dependency "vpc" {
   config_path  = "../aws-vpc"
   mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
-  mock_outputs_allowed_terraform_commands = ["plan"]
+  mock_outputs_allowed_terraform_commands = ["plan", "init", "apply"]
 }
 
 inputs = {
@@ -74,12 +74,16 @@ inputs = {
   ]
 }
 
-#generate "aws-eks-auth" {
-#  path      = "k8s-auth.auto.tf"
-#  if_exists = "overwrite_terragrunt"
-#  contents  = <<-EOF
-#    data "aws_eks_cluster" "cluster" {
-#      name = module.this.cluster_name
-#    }
-#  EOF
-#}
+generate "aws-eks-auth" {
+  path      = "k8s-auth.auto.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<-EOF
+    data "aws_eks_cluster" "cluster" {
+      name = aws_eks_cluster.this[0].id
+    }
+
+    data "aws_eks_cluster_auth" "cluster" {
+      name = aws_eks_cluster.this[0].id
+    }
+  EOF
+}
