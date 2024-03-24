@@ -1,6 +1,6 @@
 include "root" {
-  path   = find_in_parent_folders("aws.hcl")
-  expose = true
+  path           = find_in_parent_folders("aws.hcl")
+  expose         = true
   merge_strategy = "deep"
 }
 
@@ -9,20 +9,20 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path = "../aws-vpc"
-  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
+  config_path                             = "../aws-vpc"
+  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
   mock_outputs_allowed_terraform_commands = ["plan", "init"]
 }
 
 dependency "sg" {
-  config_path = "../aws-sg"
-  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).sg
+  config_path                             = "../aws-sg"
+  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).sg
   mock_outputs_allowed_terraform_commands = ["plan", "init"]
 }
 
 dependency "aws-datasource" {
-  config_path = "../aws-datasource"
-  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).datasource
+  config_path                             = "../aws-datasource"
+  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).datasource
   mock_outputs_allowed_terraform_commands = ["plan", "init"]
 }
 
@@ -32,7 +32,7 @@ inputs = {
   create_spot_instance        = true
   spot_price                  = "0.60"
   spot_type                   = "persistent"
-  instance_type               = "t3.medium"
+  instance_type               = "t3.nano"
   availability_zone           = element(dependency.vpc.outputs.azs, 0)
   subnet_id                   = element(dependency.vpc.outputs.private_subnets, 0)
   vpc_security_group_ids      = [dependency.sg.outputs.security_group_id]
@@ -45,7 +45,7 @@ inputs = {
     AdministratorAccess = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   }
 
-  enable_volume_tags = false
+  enable_volume_tags = true
   root_block_device = [
     {
       encrypted   = true

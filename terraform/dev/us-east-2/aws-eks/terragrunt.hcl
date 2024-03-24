@@ -1,6 +1,6 @@
 include "root" {
-  path   = find_in_parent_folders("aws.hcl")
-  expose = true
+  path           = find_in_parent_folders("aws.hcl")
+  expose         = true
   merge_strategy = "deep"
 }
 
@@ -13,8 +13,8 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path  = "../aws-vpc"
-  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
+  config_path                             = "../aws-vpc"
+  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
   mock_outputs_allowed_terraform_commands = ["plan", "init", "apply"]
 }
 
@@ -58,9 +58,9 @@ inputs = {
 
   eks_managed_node_groups = {
     example = {
-      min_size     = 2
-      max_size     = 3
-      desired_size = 2
+      min_size       = 2
+      max_size       = 3
+      desired_size   = 2
       instance_types = ["t3.large"]
     }
   }

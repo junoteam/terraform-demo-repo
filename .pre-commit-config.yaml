@@ -15,7 +15,7 @@ repos:
       - id: terraform_tflint
       - id: terraform_tfsec
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '3.2.32'
+    rev: '3.2.39'
     hooks:
       - id: checkov
         always_run: false

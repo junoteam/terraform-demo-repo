@@ -1,6 +1,6 @@
 include "root" {
-  path   = find_in_parent_folders("aws.hcl")
-  expose = true
+  path           = find_in_parent_folders("aws.hcl")
+  expose         = true
   merge_strategy = "deep"
 }
 
@@ -9,8 +9,8 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path = "../aws-vpc"
-  mock_outputs = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
+  config_path                             = "../aws-vpc"
+  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).vpc
   mock_outputs_allowed_terraform_commands = ["plan", "init"]
 }
 
