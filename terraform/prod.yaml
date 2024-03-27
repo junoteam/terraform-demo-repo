@@ -1,6 +1,20 @@
 ---
-# VPC settings
-cidr: 10.20.0.0/16
-name: prod-tf
-#public_subnets: 10.20.10.0/24, 10.20.20.0/24
-#private_subnets: 10.20.30.0/24, 10.20.40.0/24
+# _1 postfix in case of multiple resources of same type (e.g. vpc_2, vpc_3, etc... in the same dev env)
+vpc_1:
+  vpc_name: "prod-vpc"
+  vpc_cidr: "172.31.0.0/16"
+
+ecr_1:
+  repo_name: "prod-env-ecr"
+
+eks_1:
+  eks_cluster_name: "prod-eks-1"
+  eks_version: "1.29"
+
+s3_buckets:
+  bucket_name_1: "prod-random-named-bucket-1"
+  bucket_name_2: "prod-random-named-bucket-2"
+
+lambda_1:
+  lambda_name: "prod-lambda-test"
+  image_uri: "382370460911.dkr.ecr.us-east-2.amazonaws.com/dev-env-ecr:1.0.0"

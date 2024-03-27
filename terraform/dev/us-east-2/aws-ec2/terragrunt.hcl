@@ -27,6 +27,10 @@ dependency "aws-datasource" {
 }
 
 inputs = {
+
+#  for_each = toset(["one", "two", "three"])
+#  name = "instance-${each.key}"
+
   name                        = include.root.inputs.ec2_1.ec2_name
   ami                         = dependency.aws-datasource.outputs.amazon_linux_ami_id
   create_spot_instance        = true
