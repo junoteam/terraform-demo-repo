@@ -17,4 +17,13 @@ s3_buckets:
 
 lambda_1:
   lambda_name: "prod-lambda-test"
+  lambda_description: "My awesome lambda function"
   image_uri: "382370460911.dkr.ecr.us-east-2.amazonaws.com/dev-env-ecr:1.0.0"
+
+iam:
+  lambda_s3_policy_name: "lambda-s3-access-policy"
+  lambda_s3_policy_description: "IAM policy to allow Lambda function to access a specific S3 bucket"
+  lambda_ecr_policy_name: "lambda-ecr-access-policy"
+  lambda_ecr_policy_description: "IAM policy to allow Lambda function to access ECR"
+  lambda_role_name: "lambda-general-role"
+  lambda_role_description: "IAM role for access S3 bucket from Lambda"

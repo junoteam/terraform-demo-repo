@@ -11,8 +11,8 @@ terraform {
 inputs = {
   items = {
     lambda_s3_policy = {
-      name        = "lambda-s3-access-policy"
-      description = "IAM policy to allow Lambda function to access a specific S3 bucket"
+      name        = include.root.inputs.iam.lambda_s3_policy_name
+      description = include.root.inputs.iam.lambda_s3_policy_description
 
       policy = <<EOF
 {
@@ -25,8 +25,8 @@ inputs = {
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:s3:::prod-random-named-bucket-1",
-        "arn:aws:s3:::prod-random-named-bucket-1/*"
+        "arn:aws:s3:::${include.root.inputs.s3_buckets.bucket_name_1}",
+        "arn:aws:s3:::${include.root.inputs.s3_buckets.bucket_name_1}/*"
       ]
     }
   ]
@@ -34,8 +34,8 @@ inputs = {
 EOF
     }
     lambda_ecr_policy = {
-      name        = "lambda-ecr-access-policy"
-      description = "IAM policy to allow Lambda function to access ECR"
+      name        = include.root.inputs.iam.lambda_ecr_policy_name
+      description = include.root.inputs.iam.lambda_ecr_policy_description
       policy = <<EOF
 {
   "Version": "2012-10-17",

@@ -17,7 +17,7 @@ dependency "iam" {
 
 inputs = {
   function_name = include.root.inputs.lambda_1.lambda_name
-  description   = "My awesome lambda function"
+  description   = include.root.inputs.lambda_1.lambda_description
   lambda_role = dependency.iam.outputs.iam_role_arn
   create_package = false
   image_uri    = include.root.inputs.lambda_1.image_uri

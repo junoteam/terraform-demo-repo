@@ -18,8 +18,8 @@ inputs = {
   create_role = true
   role_requires_mfa = false
 
-  role_name    = "lambda-general-role"
-  role_description = "IAM role for access S3 bucket from Lambda"
+  role_name    = include.root.inputs.iam.lambda_role_name
+  role_description = include.root.inputs.iam.lambda_role_description
   role_path = "/"
 
   trusted_role_services = ["lambda.amazonaws.com"]
