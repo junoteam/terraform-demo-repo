@@ -18,10 +18,10 @@ inputs = {
   create_role = true
   role_requires_mfa = false
 
-  role_name    = "lambda-access-s3-ro"
+  role_name    = "lambda-general-role"
   role_description = "IAM role for access S3 bucket from Lambda"
   role_path = "/"
 
   trusted_role_services = ["lambda.amazonaws.com"]
-  custom_role_policy_arns = [dependency.iam-policy.outputs.lambda_s3_policy.arn, dependency.iam-policy.outputs.lambda_ecr_policy.arn]
+  custom_role_policy_arns = [dependency.iam-policy.outputs.wrapper["lambda_s3_policy"].arn, dependency.iam-policy.outputs.wrapper["lambda_ecr_policy"].arn]
 }

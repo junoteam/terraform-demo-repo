@@ -20,7 +20,8 @@ sg:
 datasource:
   amazon_linux_ami_id: ami-xxx
 lambda_iam:
-  lambda_s3_policy:
-    arn:  arn:aws:iam::123456789012:role/doesnotexist
-  lambda_ecr_policy:
-    arn: arn:aws:iam::123456789012:role/doesnotexist
+  wrapper:
+    lambda_s3_policy:
+      arn: arn:aws:iam::123456789012:role/doesnotexist
+    lambda_ecr_policy:
+      arn: arn:aws:iam::123456789012:role/doesnotexist
