@@ -10,7 +10,7 @@ terraform {
 
 dependency "iam-policy" {
   config_path = "../aws-iam-policy-lambda"
-  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).lambda_iam
+  mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).lambda_policy
   mock_outputs_allowed_terraform_commands = ["plan", "init"]
 }
 
