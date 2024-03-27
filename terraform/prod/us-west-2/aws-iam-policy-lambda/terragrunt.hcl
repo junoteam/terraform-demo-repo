@@ -47,7 +47,7 @@ EOF
         "ecr:BatchGetImage",
         "ecr:GetAuthorizationToken"
       ],
-      "Resource": "arn:aws:ecr:us-east-2:382370460911:repository/dev-env-ecr"
+      "Resource": "arn:aws:ecr:${include.root.locals.region}:${get_aws_account_id()}:repository/${include.root.inputs.ecr_1.repo_name}"
     }
   ]
 }

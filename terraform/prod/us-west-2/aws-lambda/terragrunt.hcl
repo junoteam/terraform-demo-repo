@@ -12,7 +12,6 @@ dependency "iam" {
   config_path                             = "../aws-iam-role-lambda"
   mock_outputs                            = yamldecode(file(find_in_parent_folders("mock-outputs.yaml"))).lambda_iam
   mock_outputs_allowed_terraform_commands = ["plan", "init"]
-
 }
 
 inputs = {
